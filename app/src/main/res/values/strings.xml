@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PowerChargeDetector</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="alert_header">Alert</string>
+
+    <!-- Messages Preferences -->
+    <string name="alert_phone_title">Alert phone number</string>
+    <string name="mqtt_server_title">MQTT server</string>
+    <string name="mqtt_topic_title">MQTT Topic</string>
+    <string name="send_sms_title">Send SMS</string>
+
+</resources>

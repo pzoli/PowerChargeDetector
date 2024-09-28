@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/alert_header">
+
+        <EditTextPreference
+            app:defaultValue="+36301234567"
+            app:key="alert_phone_number"
+            app:title="@string/alert_phone_title"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="send_sms"
+            android:title="@string/send_sms_title" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:defaultValue="tcp://server.me.local:1883"
+            app:key="mqtt_server"
+            app:title="@string/mqtt_server_title"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:defaultValue="powermon"
+            app:key="mqtt_topic"
+            app:title="@string/mqtt_topic_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
