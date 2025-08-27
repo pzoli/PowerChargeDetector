@@ -5,24 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.BatteryManager;
 import android.telephony.SmsManager;
-import android.util.JsonWriter;
 import android.widget.Toast;
 
 import androidx.preference.PreferenceManager;
 
-import org.eclipse.paho.client.mqttv3.IMqttActionListener;
-import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
-import org.eclipse.paho.client.mqttv3.IMqttToken;
-import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.nio.charset.StandardCharsets;
 
-import info.mqtt.android.service.Ack;
 import info.mqtt.android.service.MqttAndroidClient;
 
 public class PlugInControlReceiver extends BroadcastReceiver {
@@ -84,8 +76,16 @@ public class PlugInControlReceiver extends BroadcastReceiver {
                         if (sendSMS) {
                             String phoneNumber = PreferenceManager.getDefaultSharedPreferences(context).getString("alert_phone_number", "");
                             if (!phoneNumber.isEmpty()) {
-                                SmsManager smsManager = SmsManager.getDefault();
-                                smsManager.sendTextMessage(phoneNumber, null, "AC power charging: " + (statusObj.isCharging ? "true" : "false"), null, null);
+                                String content = "AC power charging: " + (statusObj.isCharging ? "true" : "false");
+
+                                try{
+                                    SmsManager smsManager = SmsManager.getDefault();
+                                    if (smsManager != null) {
+                                        smsManager.sendTextMessage(phoneNumber, null, content, null, null);
+                                    }
+                                } catch (Exception ex) {
+                                    Toast.makeText(context, ex.getMessage(), Toast.LENGTH_LONG).show();
+                                }
                             }
                         }
                         ACPowerStatus = statusObj.isCharging;
