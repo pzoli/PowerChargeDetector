@@ -1,7 +1,5 @@
 package hu.infokristaly.powerchargedetector;
 
-import static androidx.core.content.IntentCompat.getSerializableExtra;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -9,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
